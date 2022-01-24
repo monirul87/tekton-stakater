@@ -1,0 +1,21 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: task1
+spec:
+  steps:
+  - name: task-two-step-one
+    image: ubuntu
+    command: ["/bin/bash"]
+    args: ['-c', 'echo first step']
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: task2
+spec:
+  steps:
+  - name: task-two-step-one
+    image: ubuntu
+    command: ["/bin/bash"]
+    args: ['-c', 'echo second step step']

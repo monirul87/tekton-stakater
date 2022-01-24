@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: test-task
+  namespace: tekton-workshop
+spec:
+  params:
+  - name: name
+  steps:
+    - name: echo-hello-world
+      image: docker.io/library/busybox
+      command:
+       - /bin/sh
+      args:
+        - -c
+        - "echo $(params.name)"

@@ -1,0 +1,11 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:  
+   name: taskrun-hello-world
+   namespace: tekton-workshop
+spec:
+   taskRef:
+      name: test-task
+   params: 
+      - name: name
+        value: hanzala
