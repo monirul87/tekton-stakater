@@ -1,0 +1,36 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: workshop-event-listener
+  namespace: tekton-workshop
+spec:
+  serviceAccountName: workshop-event-listener
+  triggers:
+  - name: pullrequest-trigger
+    interceptors:
+    - cel:
+        filter: "(header.match('X-GitHub-Event', 'pull_request') && body.action == 'opened' || body.action == 'synchronize' )"
+    template:
+      name: workshop-pipeline-template      
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    category: route
+    router: default
+  name: workshop-event-listener
+  namespace: tekton-workshop
+spec:
+  port:
+    targetPort: http-listener
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: el-workshop-event-listener
+    weight: 100
+  wildcardPolicy: None
+
+ 

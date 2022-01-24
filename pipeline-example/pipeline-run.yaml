@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
   generateName: pipeline-example-
+  namespace: tekton-workshop
 spec:
   pipelineRef:
     name: pipeline-example
-  serviceAccountName: 'default'
