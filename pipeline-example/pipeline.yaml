@@ -3,7 +3,6 @@ apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: pipeline-example
-  namespace: tekton-workshop
 spec:
   tasks:
   - name: first-task

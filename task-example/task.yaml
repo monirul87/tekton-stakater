@@ -2,7 +2,6 @@ apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: test-task
-  namespace: tekton-workshop
 spec:
   params:
   - name: name
@@ -13,4 +12,4 @@ spec:
        - /bin/sh
       args:
         - -c
-        - "echo $(params.name)"
+        - "echo Hello $(params.name)"
