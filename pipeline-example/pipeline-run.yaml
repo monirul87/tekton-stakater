@@ -3,5 +3,8 @@ kind: PipelineRun
 metadata:
   generateName: pipeline-example-
 spec:
+  params:
+    - name: name
+      value: hanzala
   pipelineRef:
-    name: pipeline-example
+    name: workshop-pipeline

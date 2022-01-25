@@ -10,7 +10,9 @@ spec:
     - cel:
         filter: "(header.match('X-GitHub-Event', 'pull_request') && body.action == 'opened' || body.action == 'synchronize' )"
     template:
-      ref: workshop-pipeline-template      
+      ref: workshop-pipeline-template  
+    bindings:
+      - ref: workshop-pipeline-bindings    
 ---
 apiVersion: route.openshift.io/v1
 kind: Route

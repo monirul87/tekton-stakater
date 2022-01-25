@@ -3,11 +3,16 @@ kind: TriggerTemplate
 metadata:
   name: workshop-pipeline-template
 spec:
+  params: 
+     - name: branch
   resourcetemplates:
   - apiVersion: tekton.dev/v1beta1
     kind: PipelineRun
     metadata:
       generateName: simple-pipeline-run-
     spec:
+      params:
+        - name: name
+          value: $(tt.params.branch)
       pipelineRef:
         name: pipeline-example

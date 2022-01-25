@@ -1,0 +1,8 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: workshop-pipeline-bindings
+spec:
+  params:
+    - name: branch
+      value: $(body.pull_request.head.ref)

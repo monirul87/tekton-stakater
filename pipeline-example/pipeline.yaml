@@ -2,8 +2,11 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: pipeline-example
+  name: workshop-pipeline
 spec:
+  params: 
+  - name: name
+    type: string
   tasks:
   - name: first-task
     taskRef:
@@ -11,5 +14,8 @@ spec:
   - name: second-task
     taskRef:
       name: task2
+    params: 
+       - name: name
+         value: $(params.name)
     runAfter:
       - first-task

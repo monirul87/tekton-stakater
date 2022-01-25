@@ -14,8 +14,13 @@ kind: Task
 metadata:
   name: task2
 spec:
+  params:
+  - name: name
   steps:
-  - name: task-two-step-one
-    image: ubuntu
-    command: ["/bin/bash"]
-    args: ['-c', 'echo second step step']
+    - name: echo-hello-world
+      image: docker.io/library/busybox
+      command:
+       - /bin/sh
+      args:
+        - -c
+        - "echo Hello $(params.name)"
