@@ -15,4 +15,4 @@ spec:
         - name: name
           value: $(tt.params.branch)
       pipelineRef:
-        name: pipeline-example
+        name: workshop-pipeline
